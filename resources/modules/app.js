@@ -2,7 +2,7 @@ var app=angular.module('myApp', ['ngMaterial','ui.router','ui.bootstrap','smart-
 
 app.config(function($stateProvider, $urlRouterProvider) 
 {
-
+/*VBV DEMO*/
 	$urlRouterProvider.otherwise('/first');
  	$stateProvider
 
