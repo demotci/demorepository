@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Bank Details </title>
+</head>
+<body >
+	<div ng-controller="bankControl">
+	 name="myBank" form-group>
+		<div class="container-fluid">
+			<div class="row centered-form">
+				<div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10">
+					<div class="panel panel-info">
+						<div class="panel-heading">	
+							<h3 class="panel-title"><center> Details </center></h3>
+						</div>
+						<div class="panel-body">
+							 <md-tabs md-selected="tabIndex" md-dynamic-height md-border-bottom>
+      <md-tab label="personal details">
+        <md-content class="md-padding">
+        				
+
+        				<div layout-gt-sm="row">
+							<div flex="5"></div>							
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>First Name</label>
+      							<input pattern="([A-Za-z]){3,}" required name="fname" ng-model="Obj.fname">
+      							<span style="color:red" ng-show="myBank.fname.$dirty && myBank.fname.$invalid">
+									<span ng-show="myBank.fname.$error.required">Name is required.</span>
+									<span ng-show="myBank.fname.$error.pattern">Invalid Name.</span>
+								</span>
+ 							</md-input-container>
+          				
+
+          					<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Last Name</label>
+      							<input pattern="([A-Za-z]){3,15}" required name="last" ng-model="Obj.last">
+      							<span style="color:red" ng-show="myBank.last.$dirty && myBank.last.$invalid">
+									<span ng-show="myBank.last.$error.required">Last Name is required.</span>
+									<span ng-show="myBank.last.$error.pattern">Invalid Last Name.</span>
+								</span>
+ 							</md-input-container>
+
+ 							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Contact Number</label>
+      							<input required name="number" maxlength="10" minlength="10" md-maxlength="10"  pattern="[789][0-9]{9}" ng-model="Obj.number">
+      							<span style="color:red" ng-show="myBank.number.$dirty && myBank.number.$invalid">
+									<span ng-show="myBank.number.$error.required">Number is required.</span>
+									<span ng-show="myBank.number.$error.pattern">Invalid Number.</span>
+								</span>
+ 							</md-input-container>
+ 						</div>
+
+ 						<div layout-gt-sm="row">
+							<div flex="5"></div>							
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Gender</label>
+          						<md-select required name="gender" ng-model="Obj.gender">
+            						<md-option value="service">Male</md-option>
+            						<md-option value="farmer">Female</md-option>
+          						</md-select>
+ 							</md-input-container>
+          				
+
+          					<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Email ID</label>
+      							<input required name="email" ng-model="Obj.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email">
+      							<span style="color:red" ng-show="myBank.email.$dirty && myForm.email.$invalid">
+									<span ng-show="myBank.email.$error.required">Email is required.</span>
+									<span ng-show="myBank.email.$error.pattern">Invalid email address.</span>
+								</span>
+ 							</md-input-container>
+
+ 							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Birth of Date</label>
+            					<md-datepicker required name="birthOfDate" ng-model="Obj.birthOfDate"></md-datepicker>
+          					</md-input-container>
+ 						</div>
+
+ 						<div layout-gt-sm="row">
+							<div flex="100"></div>							
+							<md-input-container class="md-block" flex-gt-sm="15">
+            				<md-button ng-click="next()" class="md-raised btn-lg md-primary" ng-disabled=" myBank.fname.$invalid || myBank.last.$invalid || myBank.number.$invalid || myBank.gender.$invalid || myBank.email.$invalid || myBank.birthOfDate.$invalid" >
+      							Next
+   							</md-button>
+ 							
+<!-- 
+ 							 <md-button ng-click="back()" class="md-raised">
+      							Previous
+    						</md-button>
+    						<md-button ng-click="next()" class="md-raised">
+      							Next
+   							</md-button>
+   							</md-input-container> -->
+ 						</div>							
+        		
+          
+        </md-content>
+      </md-tab>
+      <!-- ng-disabled=" myBank.fname.$invalid || myBank.last.$invalid || myBank.number.$invalid || myBank.gender.$invalid || myBank.email.$invalid || myBank.birthOfDate.$invalid" -->
+      <md-tab label="payment" ng-disabled=" myBank.fname.$invalid || myBank.last.$invalid || myBank.number.$invalid || myBank.gender.$invalid || myBank.email.$invalid || myBank.birthOfDate.$invalid">
+        <md-content class="md-padding">
+
+        	<div layout-gt-sm="row" >
+        		<div flex="45"></div>							
+				<md-input-container class="md-block" flex-gt-sm="20	">
+            		<label>Account Number</label>
+      				
+      				<input pattern="[A-Z]{4}-[0-9]{4}" required name="acc" ng-model="Obj.acc">
+      				<span style="color:red" ng-show="myBank.acc.$dirty && myBank.acc.$invalid">
+						<span ng-show="myBank.acc.$error.required">Account Number is required.</span>
+						<span ng-show="myBank.acc.$error.pattern">Invalid Account Number.</span>
+					</span>
+					<center><span>XXXX-NNNN</span></center>
+ 				</md-input-container>
+
+				<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="15">
+            					<label>Date</label>
+            					<md-datepicker required name="Date" ng-model="Obj.Date"></md-datepicker>
+          					</md-input-container>
+
+ 				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="15">
+            		<label>Receipt Number</label>
+      				<input pattern="[0-9]{2}-[A-Z]{2}" required name="receipt" ng-model="Obj.receipt">
+      				<span style="color:red" ng-show="myBank.receipt.$dirty && myBank.receipt.$invalid">
+						<span ng-show="myBank.receipt.$error.required">Receipt Number is required.</span>
+						<span ng-show="myBank.receipt.$error.pattern">Invalid Receipt Number.</span>
+					</span>
+					<center><span>NN-XX</span></center>
+ 				</md-input-container>
+ 			</div>
+
+         	<div layout-gt-sm="row">
+				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="40">
+            		<label>From</label>
+      				<input pattern="([A-Za-z ]){3,30}" required name="from" ng-model="Obj.from">
+      				<span style="color:red" ng-show="myBank.from.$dirty && myBank.from.$invalid">
+						<span ng-show="myBank.from.$error.required">Name is required.</span>
+						<span ng-show="myBank.from.$error.pattern">Invalid Name.</span>
+					</span>
+ 				</md-input-container>
+
+ 				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="40">
+            		<label>Amount</label>
+      				<input pattern="([0-9]){3,}" required name="am" ng-model="Obj.am">
+      				<span style="color:red" ng-show="myBank.am.$dirty && myBank.am.$invalid">
+						<span ng-show="myBank.am.$error.required">Amount is required.</span>
+						<span ng-show="myBank.am.$error.pattern">Invalid Amount.</span>
+					</span>
+ 				</md-input-container>
+ 			</div>
+
+ 			<div layout-gt-sm="row">
+				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="85	">
+            		<label>Amount(Words)</label>
+      				<input pattern="([A-Za-z ]){1,}" required name="amount" ng-model="Obj.amount">
+      				<span style="color:red" ng-show="myBank.amount.$dirty && myBank.amount.$invalid">
+						<span ng-show="myBank.amount.$error.required">Amount is required.</span>
+						<span ng-show="myBank.amount.$error.pattern">Invalid Amount.</span>
+					</span>
+ 				</md-input-container>
+ 			</div>
+
+ 			<div layout-gt-sm="row">
+							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="15">
+							<md-button ng-click="back()" class="md-raised btn-lg md-primary">
+      							Previous
+   							</md-button>
+   							</md-input-container>
+
+   							<div flex="70"></div>
+							<md-input-container class="md-block" flex-gt-sm="15">
+            				<md-button ng-click="next()" class="md-raised btn-lg md-primary" ng-disabled=" myBank.fname.$invalid || myBank.last.$invalid || myBank.number.$invalid || myBank.gender.$invalid || myBank.email.$invalid || myBank.birthOfDate.$invalid || myBank.acc.$invalid || myBank.Date.$invalid || myBank.receipt.$invalid || myBank.from.$invalid || myBank.am.$invalid || myBank.amount.$invalid" >
+      							Next
+   							</md-button>
+ 							
+ 
+ 							 
+ 						</div> 
+        </md-content>
+      </md-tab>
+      <md-tab label="all info" ng-disabled=" myBank.fname.$invalid || myBank.last.$invalid || myBank.number.$invalid || myBank.gender.$invalid || myBank.email.$invalid || myBank.birthOfDate.$invalid || myBank.acc.$invalid || myBank.Date.$invalid || myBank.receipt.$invalid || myBank.from.$invalid || myBank.am.$invalid || myBank.amount.$invalid">
+        <md-content class="md-padding">
+          <div layout-gt-sm="row">
+        		<div flex="45"></div>							
+				<md-input-container class="md-block" flex-gt-sm="20	">
+            		<label>Account Number</label>
+      				<input ng-model="Obj.acc" disabled="">
+ 				</md-input-container>
+
+				<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="15">
+            					<label>Date</label>
+            					<md-datepicker ng-model="Obj.Date" disabled=""></md-datepicker>
+          					</md-input-container>
+
+ 				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="15">
+            		<label>Receipt Number</label>
+      				<input  ng-model="Obj.receipt" disabled="">
+ 				</md-input-container>
+ 			</div>
+
+         	<div layout-gt-sm="row">
+				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="40">
+            		<label>From</label>
+      				<input  ng-model="Obj.from" disabled="">
+ 				</md-input-container>
+
+ 				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="40">
+            		<label>Amount</label>
+      				<input  ng-model="Obj.am" disabled="">
+ 				</md-input-container>
+ 			</div>
+
+ 			<div layout-gt-sm="row">
+				<div flex="5"></div>							
+				<md-input-container class="md-block" flex-gt-sm="85	">
+            		<label>Amount(Words)</label>
+      				<input ng-model="Obj.amount" disabled="">
+ 				</md-input-container>
+ 			</div>
+
+
+
+ 			<div layout-gt-sm="row">
+							<div flex="5"></div>							
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>First Name</label>
+      							<input ng-model="Obj.fname" disabled="">
+ 							</md-input-container>
+          				
+
+          					<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Last Name</label>
+      							<input ng-model="Obj.last" disabled="">
+ 							</md-input-container>
+
+ 							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Contact Number</label>
+      							<input  ng-model="Obj.number" disabled="">
+ 							</md-input-container>
+ 						</div>
+
+ 						<div layout-gt-sm="row">
+							<div flex="5"></div>							
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Gender</label>
+          						<md-select  ng-model="Obj.gender" disabled="">
+          						</md-select>
+ 							</md-input-container>
+          				
+
+          					<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Email ID</label>
+      							<input ng-model="Obj.email" disabled="">
+ 							</md-input-container>
+
+ 							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="25">
+            					<label>Birth of Date</label>
+            					<md-datepicker ng-model="Obj.birthOfDate" disabled=""></md-datepicker>
+          					</md-input-container>
+ 						</div>
+
+
+
+ 						 			<div layout-gt-sm="row">
+							<div flex="5"></div>
+							<md-input-container class="md-block" flex-gt-sm="15">
+							<md-button ng-click="back()" class="md-raised btn-lg md-primary">
+      							Previous
+   							</md-button>
+   							</md-input-container>
+ 							
+ 
+ 							 
+ 						</div>
+
+        </md-content>
+      </md-tab>
+    </md-tabs>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+</body>
+</html>
